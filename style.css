@@ -20,7 +20,7 @@ body {
     line-height: 1.6;
 }
 
-/*  HEADER */
+/*  HEADER by Vipul Mittal */
 
 .header {
     position: fixed;
@@ -39,7 +39,7 @@ body {
 }
 
 
-/* NAVBAR */
+/* NAVBAR by Vipul Mittal */
 
 .navbar {
     max-width: 1500px;
@@ -58,7 +58,7 @@ body {
 }
 
 
-/*  LEFT BRAND */
+/*  LEFT BRAND by Vipul Mittal */
 
 .brand {
     display: flex;
@@ -70,8 +70,7 @@ body {
     flex-shrink: 0;
 }
 
-
-/* LOGO */
+/* LOGO by Vipul Mittal */
 
 .bmu-logo {
     width: 70px;
@@ -84,7 +83,7 @@ body {
 }
 
 
-/* BRAND TEXT */
+/* BRAND TEXT by Vipul Mittal */
 
 .brand-text {
     border-left: 1px solid rgba(255, 255, 255, 0.2);
@@ -111,7 +110,7 @@ body {
 }
 
 
-/*  CENTER NAVIGATION  */
+/*  CENTER NAVIGATION by Vipul Mittal */
 
 .nav-links {
     display: flex;
@@ -150,7 +149,7 @@ body {
 }
 
 
-/* RIGHT BUTTONS */
+/* RIGHT BUTTONS by Vipul Mittal */
 
 .header-buttons {
     display: flex;
@@ -163,7 +162,7 @@ body {
 }
 
 
-/* SIGN IN */
+/* SIGN IN by Vipul Mittal */
 
 .signin-btn {
     padding: 11px 22px;
