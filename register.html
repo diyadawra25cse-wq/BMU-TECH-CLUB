@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join BMU Tech Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#activities">Activities</a>
+            <a href="index.html#events">Events</a>
+            <a href="register.html">Join Us</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="registration-section">
+            <h1>Join BMU Tech Club</h1>
+            <p>
+                Interested in technology, innovation and teamwork?
+                Register to become a part of our community!
+            </p>
+
+            <form id="registrationForm">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="studentId">Student ID</label>
+                    <input
+                        type="text"
+                        id="studentId"
+                        name="studentId"
+                        placeholder="Enter your student ID"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department" name="department" required>
+                        <option value="">Select your department</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="ECE">Electronics and Communication</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Current Year</label>
+                    <select id="year" name="year" required>
+                        <option value="">Select your year</option>
+                        <option value="1">First Year</option>
+                        <option value="2">Second Year</option>
+                        <option value="3">Third Year</option>
+                        <option value="4">Fourth Year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">Area of Interest</label>
+                    <select id="interest" name="interest" required>
+                        <option value="">Select your interest</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="App Development">App Development</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Competitive Programming">Competitive Programming</option>
+                        <option value="Design">UI/UX and Design</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="registerButton">
+                    Submit Registration
+                </button>
+
+                <p id="formMessage" role="status" aria-live="polite"></p>
+
+            </form>
+
+            <p>
+                Already on the homepage?
+                <a href="index.html">Go back to Home</a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>BMU Tech Club | Learn. Build. Innovate.</p>
+    </footer>
+
+</body>
+</html>
