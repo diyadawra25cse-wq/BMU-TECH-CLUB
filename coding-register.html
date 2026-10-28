@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMU Coding Challenge | Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="event-register-page coding-page">
+
+    <main class="event-registration-wrapper">
+
+        <a href="index.html#events" class="back-link">
+            &larr; Back to Events
+        </a>
+
+        <section class="event-hero">
+            <p class="event-eyebrow">BMU TECH CLUB PRESENTS</p>
+
+            <h1>BMU Coding Challenge</h1>
+
+            <p class="event-description">
+                Think logically. Solve creatively. Challenge yourself.
+                Register below and get ready to put your coding skills
+                to the test.
+            </p>
+
+            <div class="event-tags">
+                <span>Problem Solving</span>
+                <span>Logical Thinking</span>
+                <span>Innovation</span>
+            </div>
+        </section>
+
+        <section class="event-form-card">
+
+            <div class="form-heading">
+                <p class="form-step-label">YOUR NEXT CHALLENGE STARTS HERE</p>
+                <h2>Register for the Challenge</h2>
+                <p>
+                    Enter your details to register for the BMU Coding Challenge.
+                </p>
+            </div>
+
+            <form id="codingChallengeForm"
+                  data-event-form="coding-challenge">
+
+                <div class="form-group">
+                    <label for="codingFullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="codingFullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="codingEnrollment">Enrollment Number</label>
+                    <input
+                        type="text"
+                        id="codingEnrollment"
+                        name="enrollmentNumber"
+                        placeholder="Enter your enrollment number"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="codingEmail">Email Address</label>
+                    <input
+                        type="email"
+                        id="codingEmail"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="codingPhone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="codingPhone"
+                        name="phoneNumber"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="codingCourse">Course</label>
+                    <select
+                        id="codingCourse"
+                        name="course"
+                        required
+                    >
+                        <option value="">Select your course</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="ECE">Electronics and Communication</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="codingSubmitButton">
+                    Register for the Challenge
+                    <span aria-hidden="true">&rarr;</span>
+                </button>
+
+                <p class="form-note">
+                    Please check your details before submitting.
+                </p>
+
+                <p id="codingFormMessage"
+                   role="status"
+                   aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <footer class="event-footer">
+            <p>BMU Tech Club | Learn. Create. Innovate.</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
