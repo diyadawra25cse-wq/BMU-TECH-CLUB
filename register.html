@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join BMU Tech Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main>
+        <section class="registration-section">
+            <h1>Join BMU Tech Club</h1>
+            <p>
+                Interested in technology, innovation and teamwork?
+                Register to become a part of our community!
+            </p>
+
+            <form id="registrationForm">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+             <div class="form-group">
+    <label for="enrollmentNumber">Enrollment Number</label>
+    <input
+        type="text"
+        id="enrollmentNumber"
+        name="enrollmentNumber"
+        placeholder="Enter your enrollment number"
+        required
+    >
+</div>
+
+<div class="form-group">
+    <label for="email">Email Address</label>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+    >
+</div>
+
+                <div class="form-group">
+    <label for="phoneNumber">Phone Number</label>
+    <input
+        type="tel"
+        id="phoneNumber"
+        name="phoneNumber"
+        placeholder="Enter your phone number"
+        required
+    >
+</div>
+
+               
+                <div class="form-group">
+    <label for="course">Course</label>
+    <select id="course" name="course" required>
+        <option value="">Select your course</option>
+        <option value="CSE">Computer Science</option>
+        <option value="ECE">Electronics and Communication</option>
+        <option value="ME">Mechanical Engineering</option>
+        <option value="Other">Other</option>
+    </select>
+</div>
+
+                <div class="form-group">
+                    <label for="year">Current Year</label>
+                    <select id="year" name="year" required>
+                        <option value="">Select your year</option>
+                        <option value="1">I</option>
+                        <option value="2">II</option>
+                        <option value="3">III</option>
+                        <option value="4">IV</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">Area of Interest</label>
+                    <select id="interest" name="interest" required>
+                        <option value="">Select your interest</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="App Development">App Development</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Competitive Programming">Competitive Programming</option>
+                        <option value="Design">UI/UX and Design</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="registerButton">
+                    Submit
+                </button>
+
+                <p id="formMessage" role="status" aria-live="polite"></p>
+
+            </form>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>BMU Tech Club | Learn. Create. Innovate.</p>
+    </footer>
+
+</body>
+</html>
