@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI & Future Technology Talk | Registration</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="event-register-page ai-talk-page">
+
+    <main class="event-registration-wrapper">
+
+        <!-- Event heading and details -->
+        <section class="event-hero">
+
+            <p class="event-eyebrow">BMU TECH CLUB PRESENTS</p>
+
+            <h1>AI & Future Technology Talk</h1>
+
+            <div class="event-details">
+                <p><strong>Date:</strong> 22 September</p>
+                <p><strong>Time:</strong> 4 PM to 5:30 PM</p>
+                <p><strong>Venue:</strong> Auditorium</p>
+            </div>
+
+        </section>
+
+        <!-- Registration form -->
+        <section class="event-form-card">
+
+            <div class="form-heading">
+                <h2>Explore the Future of AI!</h2>
+
+                <p>
+                    Enter your details:
+                </p>
+            </div>
+
+            <form id="aiTalkForm"
+                  data-event-form="ai-future-talk">
+
+                <div class="form-group">
+                    <label for="aiFullName">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="aiFullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="aiEnrollment">Enrollment Number</label>
+
+                    <input
+                        type="text"
+                        id="aiEnrollment"
+                        name="enrollmentNumber"
+                        placeholder="Enter your enrollment number"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="aiEmail">Email Address</label>
+
+                    <input
+                        type="email"
+                        id="aiEmail"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="aiPhone">Phone Number</label>
+
+                    <input
+                        type="tel"
+                        id="aiPhone"
+                        name="phoneNumber"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="aiCourse">Course</label>
+
+                    <select
+                        id="aiCourse"
+                        name="course"
+                        required
+                    >
+                        <option value="">Select your course</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="ECE">Electronics and Communication</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- AI interest categories -->
+                <div class="form-group ai-interest-group">
+
+                    <h3>Which AI topics interest you?</h3>
+
+                    <p class="form-note">
+                        Select all the topics you would like to explore.
+                    </p>
+
+                    <div class="ai-interest-options">
+
+                        <label class="interest-option">
+                            <input
+                                type="checkbox"
+                                name="aiInterests"
+                                value="Generative AI"
+                            >
+                            Generative AI
+                        </label>
+
+                        <label class="interest-option">
+                            <input
+                                type="checkbox"
+                                name="aiInterests"
+                                value="Machine Learning"
+                            >
+                            Machine Learning
+                        </label>
+
+                        <label class="interest-option">
+                            <input
+                                type="checkbox"
+                                name="aiInterests"
+                                value="Robotics and Automation"
+                            >
+                            Robotics and Automation
+                        </label>
+
+                        <label class="interest-option">
+                            <input
+                                type="checkbox"
+                                name="aiInterests"
+                                value="AI in Healthcare"
+                            >
+                            AI in Healthcare
+                        </label>
+
+                        <label class="interest-option">
+                            <input
+                                type="checkbox"
+                                name="aiInterests"
+                                value="Other"
+                            >
+                            Other
+                        </label>
+
+                    </div>
+                </div>
+
+                <button type="submit" id="aiTalkSubmitButton">
+                    Register Now
+                    <span aria-hidden="true">&rarr;</span>
+                </button>
+
+                <p class="form-note">
+                    Please check your details before submitting.
+                </p>
+
+                <p id="aiTalkFormMessage"
+                   role="status"
+                   aria-live="polite"></p>
+
+            </form>
+
+        </section>
+
+        <footer class="event-footer">
+            <p>BMU Tech Club | Learn. Create. Innovate.</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
