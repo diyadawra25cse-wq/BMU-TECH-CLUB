@@ -853,7 +853,7 @@ body {
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 25px;
 
@@ -2593,5 +2593,4 @@ body.event-register-page:not(.coding-page) .event-hero h1 {
     accent-color: #a855f7;
     cursor: pointer;
 }
-
 
