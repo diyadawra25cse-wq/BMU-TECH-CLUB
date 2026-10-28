@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Workshop | Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="event-register-page web-development-page">
+
+    <main class="event-registration-wrapper">
+
+        <section class="event-hero">
+            <p class="event-eyebrow">BMU TECH CLUB PRESENTS</p>
+
+            <h1>Web Development Workshop</h1>
+
+            <div class="event-details">
+                <p><strong>Date:</strong> 15 September</p>
+                <p><strong>Time:</strong> 2 pm to 5 pm</p>
+                <p><strong>Venue:</strong> NB 105</p>
+            </div>
+        </section>
+
+        <section class="event-form-card">
+
+            <div class="form-heading">
+                <h2>Turn Your Ideas into Websites!</h2>
+                
+            </div>
+
+            <form id="webDevelopmentForm"
+                  data-event-form="web-development-workshop">
+
+                <div class="form-group">
+                    <label for="webDevFullName">Full Name</label>
+                    <input
+                        type="text"
+                        id="webDevFullName"
+                        name="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="webDevEnrollment">Enrollment Number</label>
+                    <input
+                        type="text"
+                        id="webDevEnrollment"
+                        name="enrollmentNumber"
+                        placeholder="Enter your enrollment number"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="webDevEmail">Email Address</label>
+                    <input
+                        type="email"
+                        id="webDevEmail"
+                        name="email"
+                        placeholder="Enter your email address"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="webDevPhone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="webDevPhone"
+                        name="phoneNumber"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="webDevCourse">Course</label>
+                    <select
+                        id="webDevCourse"
+                        name="course"
+                        required
+                    >
+                        <option value="">Select your course</option>
+                        <option value="CSE">Computer Science</option>
+                        <option value="ECE">Electronics and Communication</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="webDevSubmitButton">
+                    Register Now
+                    <span aria-hidden="true">&rarr;</span>
+                </button>
+
+                <p class="form-note">
+                    Please check your details before submitting.
+                </p>
+
+                <p id="webDevFormMessage"
+                   role="status"
+                   aria-live="polite"></p>
+
+            </form>
+        </section>
+
+        <footer class="event-footer">
+            <p>BMU Tech Club | Learn. Create. Innovate.</p>
+        </footer>
+
+    </main>
+
+</body>
+</html>
