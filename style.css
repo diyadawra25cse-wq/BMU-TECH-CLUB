@@ -853,7 +853,7 @@ body {
 
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 25px;
 
@@ -2058,3 +2058,540 @@ body.success-popup-open {
 .registration-section h1 {
     font-family: "Space Grotesk", sans-serif !important;
 }
+
+body.event-register-page {
+    min-height: 100vh;
+    padding: 36px 18px;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(109, 40, 217, 0.20), transparent 32%),
+        radial-gradient(circle at 90% 85%, rgba(192, 38, 211, 0.12), transparent 30%),
+        #090611;
+}
+
+.event-registration-wrapper {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.event-hero {
+    padding: 34px 24px 28px;
+    text-align: center;
+}
+
+.event-eyebrow {
+    margin-bottom: 12px;
+    color: #d8b4fe;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.event-hero h1 {
+    margin: 0 0 22px;
+    color: #ffffff;
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -0.7px;
+    text-shadow: 0 0 28px rgba(168, 85, 247, 0.28);
+}
+
+.event-details {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    color: #e0d2ef;
+    font-size: 14px;
+}
+
+.event-details p {
+    margin: 0;
+}
+
+.event-details strong {
+    color: #c084fc;
+}
+
+.event-form-card {
+    padding: 34px 38px;
+    background: linear-gradient(145deg, rgba(32, 16, 47, 0.98), rgba(16, 8, 23, 0.98));
+    border: 1px solid rgba(168, 85, 247, 0.32);
+    border-radius: 22px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35),
+                0 0 28px rgba(126, 34, 206, 0.08);
+}
+
+.form-heading {
+    margin-bottom: 26px;
+    text-align: center;
+}
+
+.form-heading h2 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: clamp(23px, 3.5vw, 29px);
+    line-height: 1.3;
+}
+
+.form-heading p,
+.form-note {
+    color: #cfc4db;
+    font-size: 15px;
+}
+
+.event-form-card .form-group {
+    margin-bottom: 19px;
+}
+
+.event-form-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e9d5ff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.event-form-card input,
+.event-form-card select {
+    display: block;
+    width: 100%;
+    min-height: 49px;
+    padding: 12px 14px;
+    color: #ffffff;
+    background: #0d0717;
+    border: 1px solid rgba(168, 85, 247, 0.36);
+    border-radius: 10px;
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-form-card input::placeholder {
+    color: #a99ab9;
+    opacity: 1;
+}
+
+.event-form-card select option {
+    color: #ffffff;
+    background: #100817;
+}
+
+.event-form-card input:focus,
+.event-form-card select:focus {
+    outline: none;
+    border-color: #c084fc;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.18);
+}
+
+#codingSubmitButton, #webDevSubmitButton, #aiTalkSubmitButton{
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px 22px;
+    color: #ffffff;
+    background: linear-gradient(90deg, #7b2cff, #c026d3);
+    border: none;
+    border-radius: 30px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 7px 22px rgba(147, 51, 234, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#codingSubmitButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 28px rgba(147, 51, 234, 0.35);
+}
+
+#codingSubmitButton:focus-visible {
+    outline: 2px solid #e9d5ff;
+    outline-offset: 3px;
+}
+
+.event-form-card .form-note {
+    margin-top: 16px;
+    text-align: center;
+}
+
+#codingFormMessage {
+    margin-top: 14px;
+    color: #d8b4fe;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#codingFormMessage:empty {
+    display: none;
+}
+
+#codingFormMessage.error {
+    color: #fca5a5;
+}
+
+#codingFormMessage.success {
+    color: #86efac;
+}
+
+.event-footer {
+    padding: 24px 12px 8px;
+    color: #887893;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    body.event-register-page {
+        padding: 18px 12px;
+    }
+
+    .event-hero {
+        padding: 26px 8px 22px;
+    }
+
+    .event-eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .event-details {
+        gap: 7px 14px;
+        font-size: 13px;
+    }
+
+    .event-form-card {
+        padding: 26px 18px;
+        border-radius: 17px;
+    }
+
+    .event-form-card .form-group {
+        margin-bottom: 16px;
+    }
+
+    .event-form-card input,
+    .event-form-card select {
+        min-height: 46px;
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .event-form-card input,
+    .event-form-card select,
+    #codingSubmitButton {
+        transition: none;
+    }
+}
+
+
+/* ===== Improved Coding Challenge Page Details ===== */
+
+body.event-register-page .event-details {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 28px auto 30px;
+}
+
+body.event-register-page .event-details > * {
+    padding: 13px 22px;
+    margin: 0;
+    border-right: 1px solid rgba(192, 132, 252, 0.4);
+    background: rgba(168, 85, 247, 0.08);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+body.event-register-page .event-details > *:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+body.event-register-page .event-details > *:last-child {
+    border-right: none;
+    border-radius: 0 10px 10px 0;
+}
+
+body.event-register-page .event-details strong {
+    color: #d8b4fe;
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+/* ===== Form Heading ===== */
+
+body.event-register-page .form-heading h2 {
+    font-size: 29px;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 18px rgba(168, 85, 247, 0.2);
+}
+
+body.event-register-page .form-heading {
+    margin-bottom: 28px;
+}
+
+/* ===== Cleaner Form Fields ===== */
+
+body.event-register-page .event-form-card label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 15px;
+    font-weight: 650;
+    letter-spacing: 0.15px;
+}
+
+body.event-register-page .event-form-card input,
+body.event-register-page .event-form-card select {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.event-register-page .event-form-card input:focus,
+body.event-register-page .event-form-card select:focus {
+    border-color: #c084fc;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
+    outline: none;
+}
+
+/* ===== Highlighted Reminder ===== */
+
+body.event-register-page .form-note {
+    margin-top: 20px;
+    padding: 12px 15px;
+    border: 1px solid rgba(251, 191, 36, 0.4);
+    border-radius: 9px;
+    background: rgba(251, 191, 36, 0.08);
+    color: #fde68a;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* ===== Mobile Layout ===== */
+
+@media (max-width: 600px) {
+    body.event-register-page .event-details {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 0 16px;
+    }
+
+    body.event-register-page .event-details > * {
+        border: 1px solid rgba(192, 132, 252, 0.3);
+        border-radius: 9px;
+        text-align: center;
+        padding: 10px 12px;
+    }
+
+    body.event-register-page .event-details > *:first-child,
+    body.event-register-page .event-details > *:last-child {
+        border-radius: 9px;
+    }
+
+    body.event-register-page .form-heading h2 {
+        font-size: 24px;
+    }
+
+    body.event-register-page .form-note {
+        font-size: 13px;
+    }
+}
+
+
+/* ===== More Exciting Coding Challenge Headings ===== */
+
+/* BMU TECH CLUB PRESENTS */
+body.event-register-page .event-eyebrow {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e9d5ff;
+    padding: 9px 17px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(192, 132, 252, 0.45);
+    border-radius: 30px;
+    background: linear-gradient(
+        90deg,
+        rgba(124, 58, 237, 0.18),
+        rgba(192, 38, 211, 0.16)
+    );
+    box-shadow: 0 0 22px rgba(168, 85, 247, 0.12);
+}
+
+/* Main challenge heading */
+body.event-register-page .event-hero h1 {
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 850;
+    line-height: 1.15;
+    letter-spacing: -1.2px;
+    margin: 0 auto 20px;
+    color: #ffffff;
+    text-shadow: 0 0 28px rgba(168, 85, 247, 0.28);
+}
+
+/* Heading underline accent */
+body.event-register-page .event-hero h1::after {
+    content: "";
+    display: block;
+    width: 95px;
+    height: 4px;
+    margin: 17px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #8b5cf6, #e879f9);
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
+}
+
+/* Form heading: Your Next Challenge Starts Here! */
+body.event-register-page .form-heading h2 {
+    font-size: clamp(25px, 3vw, 34px);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+    margin-bottom: 15px;
+}
+
+/* Enter your details */
+body.event-register-page .form-heading p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #d8b4fe;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+/* Subtle hover interaction */
+body.event-register-page .event-eyebrow {
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+body.event-register-page .event-eyebrow:hover {
+    border-color: #d8b4fe;
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.28);
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+    body.event-register-page .event-eyebrow {
+        font-size: 11px;
+        letter-spacing: 2px;
+        padding: 8px 13px;
+    }
+
+    body.event-register-page .event-hero h1 {
+        letter-spacing: -0.6px;
+    }
+
+    body.event-register-page .form-heading h2 {
+        font-size: 25px;
+    }
+
+    body.event-register-page .form-heading p {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.event-register-page .event-eyebrow {
+        transition: none;
+    }
+}
+
+/* Register Now links styled like the BMU Coding Challenge button */
+
+.event-info .register-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #7b2cff, #c026d3);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.event-info .register-btn:hover {
+    transform: scale(1.05);
+}
+
+
+/* Keep the AI Talk title on one line */
+body.event-register-page:not(.coding-page) .event-hero h1 {
+    font-size: clamp(30px, 3.5vw, 48px);
+    white-space: nowrap;
+    letter-spacing: -1px;
+}
+
+
+/* AI Talk - Interest Checkbox Layout */
+
+.ai-talk-page .ai-interest-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ai-talk-page .interest-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.ai-talk-page .interest-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-height: 18px;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: #a855f7;
+    cursor: pointer;
+}
+
+
+/* Fix AI topic checkbox alignment */
+
+.ai-talk-page .ai-interest-options {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+}
+
+.ai-talk-page .ai-interest-options label.interest-option {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    cursor: pointer;
+}
+
+.ai-talk-page .ai-interest-options input[type="checkbox"] {
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    min-height: 18px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 18px !important;
+    accent-color: #a855f7;
+    cursor: pointer;
+}
+
+
