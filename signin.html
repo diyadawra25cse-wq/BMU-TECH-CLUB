@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090611">
+    <title>Sign In | BMU Tech Club</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="signin.css">
+    <script src="signin.js" defer></script>
+</head>
+<body class="signin-page">
+    <header class="signin-topbar">
+        <a class="signin-brand" href="index.html" aria-label="BMU Tech Club home">
+            <img src="bml_logo2.png" alt="BMU Tech Club logo">
+            <span>
+                <strong>BMU Tech Club</strong>
+                <small>BML Munjal University</small>
+            </span>
+        </a>
+    </header>
+
+    <main class="signin-main">
+        <section class="signin-card" aria-labelledby="signinTitle">
+            <p class="signin-kicker">WELCOME BACK</p>
+            <h1 id="signinTitle">Sign in</h1>
+            <p class="signin-subtitle">Continue your BMU Tech Club journey.</p>
+
+            <form id="signinForm" novalidate>
+                <div class="signin-field">
+                    <label for="signinEmail">University email</label>
+                    <input type="email" id="signinEmail" name="email" placeholder="you@bmu.edu.in" autocomplete="email" required>
+                </div>
+
+                <div class="signin-field">
+                    <label for="signinPassword">Password</label>
+                    <input type="password" id="signinPassword" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                </div>
+
+                <button class="signin-submit" type="submit">Sign In </button>
+                <p id="signinMessage" class="signin-message" role="status" aria-live="polite"></p>
+            </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,80 @@
+/* Simple sign-in page styling — scoped to avoid changing other pages */
+.signin-page {
+    min-height: 100vh;
+    padding: 22px clamp(16px, 4vw, 42px) 28px;
+    background:
+        radial-gradient(circle at 12% 12%, rgba(109, 40, 217, .16), transparent 32%),
+        radial-gradient(circle at 88% 88%, rgba(192, 38, 211, .12), transparent 30%),
+        #090611;
+    color: #fff;
+}
+.signin-page a { color: inherit; }
+.signin-topbar {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+.signin-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.signin-brand img { width: 48px; height: 48px; object-fit: contain; }
+.signin-brand span { display: flex; flex-direction: column; gap: 2px; line-height: 1.35; }
+.signin-brand strong { font-size: 16px; }
+.signin-brand small { color: #c77dff; font-size: 11px; }
+.signin-back-link { color: #d8b4fe !important; font-size: 13px; text-decoration: none; }
+.signin-back-link:hover { color: #fff !important; }
+.signin-main { width: 100%; max-width: 430px; margin: clamp(38px, 8vh, 78px) auto 0; }
+.signin-card {
+    padding: clamp(26px, 5vw, 40px);
+    border: 1px solid rgba(168, 85, 247, .34);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(32, 16, 47, .96), rgba(16, 8, 23, .98));
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .34), 0 0 28px rgba(126, 34, 206, .08);
+}
+.signin-kicker { margin: 0 0 8px; color: #d8b4fe; font-size: 11px; font-weight: 800; letter-spacing: 2px; }
+.signin-card h1 { margin: 0; color: #fff; font-size: clamp(31px, 5vw, 38px); line-height: 1.2; }
+.signin-subtitle { margin: 9px 0 26px; color: #cfc4db; font-size: 14px; }
+.signin-field { margin-bottom: 18px; }
+.signin-field label { display: block; margin-bottom: 7px; color: #e9d5ff; font-size: 13px; font-weight: 700; }
+.signin-field input {
+    width: 100%; min-height: 46px; padding: 11px 13px;
+    border: 1px solid rgba(168, 85, 247, .34); border-radius: 10px;
+    outline: none; background: #0c0615; color: #fff; font: inherit; font-size: 14px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+.signin-field input::placeholder { color: #93829f; }
+.signin-field input:focus { border-color: #c084fc; box-shadow: 0 0 0 3px rgba(168, 85, 247, .15); }
+.signin-field input[aria-invalid="true"] { border-color: #fb7185; }
+.signin-options { margin: 2px 0 20px; }
+.signin-remember { display: inline-flex; align-items: center; gap: 8px; color: #cfc4db; font-size: 12px; cursor: pointer; }
+.signin-remember input { accent-color: #a855f7; }
+.signin-submit {
+    width: 100%; min-height: 47px; display: flex; justify-content: center; align-items: center; gap: 9px;
+    padding: 12px 18px; border: 0; border-radius: 11px; color: #fff;
+    background: linear-gradient(100deg, #6d28d9, #9333ea 55%, #c026d3);
+    box-shadow: 0 8px 22px rgba(147, 51, 234, .24); font: inherit; font-size: 14px; font-weight: 800; cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.signin-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(147, 51, 234, .34); }
+.signin-message { display: none; margin: 14px 0 0; padding: 10px 12px; border-radius: 9px; font-size: 12px; line-height: 1.6; }
+.signin-message.is-visible { display: block; }
+.signin-message.is-error { color: #fecdd3; background: rgba(244, 63, 94, .08); border: 1px solid rgba(251, 113, 133, .28); }
+.signin-message.is-info { color: #e9d5ff; background: rgba(168, 85, 247, .09); border: 1px solid rgba(192, 132, 252, .28); }
+.signin-signup-prompt { margin: 22px 0 0; color: #a99ab9; text-align: center; font-size: 12px; }
+.signin-signup-prompt a { color: #d8b4fe; font-weight: 700; text-decoration: none; }
+.signin-signup-prompt a:hover { color: #fff; text-decoration: underline; }
+.signin-note { margin: 14px 0 0; color: #766680; text-align: center; font-size: 11px; line-height: 1.6; }
+.signin-submit:focus-visible, .signin-back-link:focus-visible, .signin-brand:focus-visible { outline: 2px solid #e9d5ff; outline-offset: 4px; }
+@media (max-width: 480px) {
+    .signin-page { padding: 16px 14px 22px; }
+    .signin-brand img { width: 42px; height: 42px; }
+    .signin-brand strong { font-size: 14px; }
+    .signin-brand small { font-size: 10px; }
+    .signin-back-link { font-size: 12px; }
+    .signin-main { margin-top: 44px; }
+    .signin-card { border-radius: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .signin-page *, .signin-page *::before, .signin-page *::after { transition: none !important; }
+}
