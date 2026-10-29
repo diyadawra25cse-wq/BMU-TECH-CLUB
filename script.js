@@ -174,10 +174,11 @@ const phoneNumber = document.getElementById("phoneNumber").value.trim();
 const department = document.getElementById("course").value;
 const year = document.getElementById("year").value;
 const interest = document.getElementById("interest").value;
+const password = document.getElementById("password").value;
 
         // Validate the form fields.
         if (!fullName || !email || !studentId || !phoneNumber ||
-    !department || !year || !interest) {
+    !department || !year || !interest || !password) {
             showMessage("Please fill in all required fields.", "error");
             return;
         }
@@ -238,6 +239,7 @@ if (atPosition < 1 ||
         const registration = {
     fullName: fullName,
     email: email,
+    password: password,
     studentId: studentId,
     phoneNumber: phoneNumber,
     department: department,
@@ -277,3 +279,183 @@ try {
 
 });
 }
+
+
+/* ===== EVENT REGISTRATION FORMS ===== */
+
+const eventForms = document.querySelectorAll("[data-event-form]");
+
+eventForms.forEach(function (eventForm) {
+    eventForm.noValidate = true;
+
+    eventForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const eventName = eventForm.dataset.eventForm;
+
+        // Find the correct message element for this event.
+        let messageId;
+
+        if (eventName === "coding-challenge") {
+            messageId = "codingFormMessage";
+        } else if (eventName === "ai-future-talk") {
+            messageId = "aiTalkFormMessage";
+        } else if (eventName === "web-development-workshop") {
+            messageId = "webDevFormMessage";
+        }
+
+        const message = document.getElementById(messageId);
+
+        function showEventMessage(text, type) {
+            if (!message) return;
+
+            message.textContent = text;
+            message.classList.remove("error", "success");
+            message.classList.add(type);
+        }
+
+        // Read the entered details.
+        const fullName = eventForm.querySelector(
+            '[name="fullName"]'
+        ).value.trim();
+
+        const studentId = eventForm.querySelector(
+            '[name="enrollmentNumber"]'
+        ).value.trim();
+
+        const email = eventForm.querySelector(
+            '[name="email"]'
+        ).value.trim();
+
+        const phoneNumber = eventForm.querySelector(
+            '[name="phoneNumber"]'
+        ).value.trim();
+
+        const course = eventForm.querySelector(
+            '[name="course"]'
+        ).value;
+
+        // Check required fields.
+        if (
+            !fullName ||
+            !studentId ||
+            !email ||
+            !phoneNumber ||
+            !course
+        ) {
+            showEventMessage(
+                "Please fill in all required fields.",
+                "error"
+            );
+            return;
+        }
+
+        // Validate the name.
+        if (!/^[A-Za-z -]+$/.test(fullName)) {
+            showEventMessage(
+                "Please enter a valid name using letters, spaces or hyphens.",
+                "error"
+            );
+            return;
+        }
+
+        // Validate the email.
+        const atPosition = email.indexOf("@");
+        const dotPosition = email.lastIndexOf(".");
+
+        if (
+            atPosition < 1 ||
+            dotPosition < atPosition + 2 ||
+            dotPosition === email.length - 1
+        ) {
+            showEventMessage(
+                "Please enter a valid email address.",
+                "error"
+            );
+            return;
+        }
+
+        // Collect selected AI interests, if applicable.
+        const selectedInterests = Array.from(
+            eventForm.querySelectorAll(
+                'input[name="aiInterests"]:checked'
+            )
+        ).map(function (checkbox) {
+            return checkbox.value;
+        });
+
+        // Prepare the registration record.
+        const registration = {
+            eventName: eventName,
+            fullName: fullName,
+            studentId: studentId,
+            email: email,
+            phoneNumber: phoneNumber,
+            department: course,
+            submittedAt: new Date().toISOString()
+        };
+
+        if (eventName === "ai-future-talk") {
+            registration.aiInterests = selectedInterests;
+        }
+
+        try {
+            // Read the registrations already saved.
+            const registrations = getRegistrations();
+
+            // Prevent duplicate registration for this event.
+            const alreadyRegistered = registrations.some(
+                function (item) {
+                    return (
+                        item.eventName === eventName &&
+                        item.studentId &&
+                        item.studentId.toLowerCase() ===
+                            studentId.toLowerCase()
+                    );
+                }
+            );
+
+            if (alreadyRegistered) {
+                showEventMessage(
+                    "This enrollment number is already registered for this event.",
+                    "error"
+                );
+                return;
+            }
+
+            // Save the new registration.
+            saveRegistration(registration);
+
+            // Update the popup message before opening it.
+            const popupMessage = document.getElementById(
+                "successPopupMessage"
+            );
+
+            if (popupMessage) {
+                popupMessage.textContent =
+                    "Your registration for this event has been submitted successfully!";
+            }
+
+            showEventMessage(
+                "Registration successful!",
+                "success"
+            );
+
+            eventForm.reset();
+
+            // Open the existing animated success popup.
+            openSuccessPopup();
+
+        } catch (error) {
+            showEventMessage(
+                "Registration could not be saved. Please try again.",
+                "error"
+            );
+
+            console.error(
+                "Event registration saving failed:",
+                error
+            );
+        }
+    });
+});

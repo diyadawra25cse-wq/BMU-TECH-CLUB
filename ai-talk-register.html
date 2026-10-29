@@ -8,6 +8,7 @@
     <title>AI & Future Technology Talk | Registration</title>
 
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body class="event-register-page ai-talk-page">
@@ -180,6 +181,51 @@
         </footer>
 
     </main>
+
+    
+<!-- Registration Success Popup -->
+<div id="registrationSuccessPopup"
+     class="success-popup-overlay"
+     hidden
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="successPopupTitle"
+     aria-describedby="successPopupMessage">
+
+    <div class="success-popup-card">
+
+        <button type="button"
+                class="success-popup-close"
+                aria-label="Close success popup">
+            &times;
+        </button>
+
+        <div class="success-tick-wrap">
+            <svg class="success-tick-svg"
+                 viewBox="0 0 52 52"
+                 aria-hidden="true">
+                <circle class="success-tick-circle"
+                        cx="26" cy="26" r="25"
+                        fill="none" />
+                <path class="success-tick-path"
+                      fill="none"
+                      d="M14 27 l8 8 l16 -16" />
+            </svg>
+        </div>
+
+        <h2 id="successPopupTitle">Registration Successful!</h2>
+
+        <p id="successPopupMessage">
+            Your registration has been submitted successfully.
+        </p>
+
+        <button type="button" class="success-popup-continue">
+            Continue
+        </button>
+
+    </div>
+</div>
+
 
 </body>
 </html>
