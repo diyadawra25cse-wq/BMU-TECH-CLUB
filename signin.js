@@ -1,4 +1,4 @@
-
+const API_BASE = window.API_BASE_URL || "http://localhost:5000";
 const signinForm = document.getElementById("signinForm");
 const signinEmail = document.getElementById("signinEmail");
 const signinPassword = document.getElementById("signinPassword");
@@ -17,7 +17,7 @@ function showSigninMessage(text, type) {
 }
 
 // Handle form submission.
-signinForm.addEventListener("submit", function (event) {
+signinForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const email = signinEmail.value.trim().toLowerCase();
@@ -46,62 +46,58 @@ signinForm.addEventListener("submit", function (event) {
         return;
     }
 
-    // Read saved accounts from the browser.
-    let users;
-
     try {
-        users = JSON.parse(localStorage.getItem("registrations")) || [];
+        // Send login details to the backend.
+        const response = await fetch(
+            `${API_BASE}/api/auth/login`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }
+        );
+
+        const result = await response.json();
+
+        // Handle incorrect credentials or other errors.
+        if (!response.ok) {
+            showSigninMessage(
+                result.message || "Login failed. Please try again.",
+                "error"
+            );
+            return;
+        }
+
+        // Save the JWT token for future authenticated requests.
+        localStorage.setItem("authToken", result.token);
+
+        // Save basic user information (never save the password).
+        localStorage.setItem(
+            "currentUser",
+            JSON.stringify(result.data)
+        );
+
+        showSigninMessage(
+            "Sign-in successful! Welcome back.",
+            "info"
+        );
+
+        // Clear the password field.
+        signinPassword.value = "";
+        // Redirect to homepage after successful login.
+        window.location.href = "index.html"; 
+
     } catch (error) {
         showSigninMessage(
-            "Unable to read saved account information.",
+            "Unable to connect to the server. Please try again.",
             "error"
         );
-        return;
+
+        console.error("Sign-in failed:", error);
     }
-
-    // Find an account matching the entered email.
-    
-const user = users.find(function (account) {
-    return (
-        account.email &&
-        account.email.toLowerCase() === email &&
-        account.password === password
-    );
-});
-
-if (!user) {
-    const emailExists = users.some(function (account) {
-        return (
-            account.email &&
-            account.email.toLowerCase() === email
-        );
-    });
-
-    if (emailExists) {
-        showSigninMessage(
-            "Incorrect password. Please try again.",
-            "error"
-        );
-    } else {
-        showSigninMessage(
-            "No account found with this email. Please join the club first.",
-            "error"
-        );
-    }
-
-    return;
-}
-
-showSigninMessage(
-    "Sign-in successful! Welcome back.",
-    "info"
-);
-
-    // Successful sign-in.
-    showSigninMessage(
-        "Sign-in successful! Welcome back.",
-        "info"
-    );
-
-    // Add your destination page here when needed.
 });

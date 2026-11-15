@@ -1,0 +1,14 @@
+{
+  "name": "bmu-tech-club",
+  "version": "1.0.0",
+  "description": "BMU Tech Club official web portal and API",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3"
+  }
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "web-development-workshop",
+    "title": "Web Development Workshop",
+    "date": "2026-09-15",
+    "displayDate": "15 September",
+    "time": "2:00 PM - 5:00 PM",
+    "venue": "NB 105",
+    "description": "Learn the basics of HTML, CSS and responsive web design.",
+    "category": "Workshop",
+    "capacity": 60
+  },
+  {
+    "id": "ai-future-talk",
+    "title": "AI & Future Technology Talk",
+    "date": "2026-09-22",
+    "displayDate": "22 September",
+    "time": "4:00 PM - 5:30 PM",
+    "venue": "Auditorium",
+    "description": "Explore how Artificial Intelligence is changing industries.",
+    "category": "Talk",
+    "capacity": 150
+  },
+  {
+    "id": "coding-challenge",
+    "title": "BMU Coding Challenge",
+    "date": "2026-09-30",
+    "displayDate": "30 September",
+    "time": "3:00 PM - 5:00 PM",
+    "venue": "NB 105",
+    "description": "Test your programming skills and compete with fellow students.",
+    "category": "Competition",
+    "capacity": 80
+  }
+]

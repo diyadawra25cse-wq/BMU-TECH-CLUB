@@ -1,5 +1,7 @@
 console.log("BMU Tech Club JavaScript is connected!");
 
+const API_BASE = window.API_BASE_URL || "http://localhost:5000";
+
 const KEY = "registrations";
 
 
@@ -162,7 +164,7 @@ if (form) {
     // We will handle validation using JavaScript.
     form.noValidate = true;
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         // Read the values entered in the form.
@@ -251,35 +253,52 @@ if (atPosition < 1 ||
         // Save the registration using your existing function.
         
 try {
-    // Check whether this student has already registered
-    const registrations = getRegistrations();
+    const response = await fetch(
+        `${API_BASE}/api/auth/register`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                fullName,
+                enrollmentNumber: studentId,
+                email,
+                password,
+                phoneNumber,
+                course: department,
+                year,
+                interest
+            })
+        }
+    );
 
-    const alreadyRegistered = registrations.some(function (item) {
-        return item.studentId &&
-            item.studentId.toLowerCase() === studentId.toLowerCase();
-    });
+    const result = await response.json();
 
-    if (alreadyRegistered) {
-        showMessage("This enrollment number is already registered.", "error");
+    if (!response.ok) {
+        showMessage(
+            result.message || "Registration failed. Please try again.",
+            "error"
+        );
         return;
     }
 
-    // Save only if this is a new registration
-    saveRegistration(registration);
+    localStorage.setItem("authToken", result.token);
+    localStorage.setItem("currentUser", JSON.stringify(result.data));
 
     showMessage("Registration successful!", "success");
     form.reset();
     openSuccessPopup();
 
 } catch (error) {
-    showMessage("Registration could not be saved. Please try again.", "error");
-    console.error("Registration saving failed:", error);
+    showMessage(
+        "Unable to connect to the server. Please try again.",
+        "error"
+    );
+    console.error("Registration failed:", error);
 }
-
-
-});
+    });
 }
-
 
 /* ===== EVENT REGISTRATION FORMS ===== */
 
@@ -288,7 +307,7 @@ const eventForms = document.querySelectorAll("[data-event-form]");
 eventForms.forEach(function (eventForm) {
     eventForm.noValidate = true;
 
-    eventForm.addEventListener("submit", function (event) {
+    eventForm.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const eventName = eventForm.dataset.eventForm;
@@ -400,62 +419,60 @@ eventForms.forEach(function (eventForm) {
         }
 
         try {
-            // Read the registrations already saved.
-            const registrations = getRegistrations();
+    const token = localStorage.getItem("authToken");
 
-            // Prevent duplicate registration for this event.
-            const alreadyRegistered = registrations.some(
-                function (item) {
-                    return (
-                        item.eventName === eventName &&
-                        item.studentId &&
-                        item.studentId.toLowerCase() ===
-                            studentId.toLowerCase()
-                    );
-                }
-            );
+    if (!token) {
+        showEventMessage(
+            "Please sign in first before registering for events.",
+            "error"
+        );
+        return;
+    }
 
-            if (alreadyRegistered) {
-                showEventMessage(
-                    "This enrollment number is already registered for this event.",
-                    "error"
-                );
-                return;
-            }
-
-            // Save the new registration.
-            saveRegistration(registration);
-
-            // Update the popup message before opening it.
-            const popupMessage = document.getElementById(
-                "successPopupMessage"
-            );
-
-            if (popupMessage) {
-                popupMessage.textContent =
-                    "Your registration for this event has been submitted successfully!";
-            }
-
-            showEventMessage(
-                "Registration successful!",
-                "success"
-            );
-
-            eventForm.reset();
-
-            // Open the existing animated success popup.
-            openSuccessPopup();
-
-        } catch (error) {
-            showEventMessage(
-                "Registration could not be saved. Please try again.",
-                "error"
-            );
-
-            console.error(
-                "Event registration saving failed:",
-                error
-            );
+    const response = await fetch(
+        `${API_BASE}/api/registrations`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                eventName: eventName,
+                aiInterests: selectedInterests
+            })
         }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        showEventMessage(
+            result.message || "Registration failed. Please try again.",
+            "error"
+        );
+        return;
+    }
+
+    const popupMessage = document.getElementById(
+        "successPopupMessage"
+    );
+
+    if (popupMessage) {
+        popupMessage.textContent =
+            "Your registration for this event has been submitted successfully!";
+    }
+
+    showEventMessage("Registration successful!", "success");
+    eventForm.reset();
+    openSuccessPopup();
+
+} catch (error) {
+    showEventMessage(
+        "Unable to connect to the server. Please try again.",
+        "error"
+    );
+    console.error("Event registration failed:", error);
+}
     });
 });

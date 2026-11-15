@@ -49,20 +49,105 @@
         </ul>
 
 
-        <!-- RIGHT: ACTION BUTTONS -->
-        <div class="header-buttons">
+       
+<!-- RIGHT: AUTHENTICATION / PROFILE SECTION -->
 
-           
-<a href="signin.html" class="signin-btn" target="_blank" rel="noopener noreferrer">
-    Sign In
-</a>
+<div class="header-buttons">
+
+    <!-- VISITOR VIEW -->
+    <div id="visitorNav" class="visitor-nav">
+
+        <a href="signin.html" class="signin-btn" target="_blank" rel="noopener noreferrer">
+            Sign In
+        </a>
+
+        <a href="register.html" class="join-btn" target="_blank" rel="noopener noreferrer">
+            Join Us
+        </a>
+
+    </div>
 
 
-<a href="register.html" class="join-btn" target="_blank" rel="noopener noreferrer">
-    Join Us
-</a>
+    <!-- LOGGED-IN STUDENT VIEW -->
+    
+
+<div id="studentNav" class="student-nav" hidden>
+
+    <!-- NOTIFICATION DROPDOWN -->
+    <div class="notification-dropdown">
+
+        <button
+            type="button"
+            id="notificationsBtn"
+            class="notifications-btn"
+            aria-label="Open notifications"
+            aria-expanded="false"
+        >
+            <span class="notification-bell">🔔</span>
+            <span id="notificationBadge" class="notification-badge" hidden>0</span>
+        </button>
+
+        <div id="notificationsMenu" class="notifications-menu" hidden>
+
+            <div class="notifications-header">
+                <h3>Notifications</h3>
+                <button type="button" id="markAllReadBtn">
+                    Mark all as read
+                </button>
+            </div>
+
+            <div id="notificationsList" class="notifications-list">
+                <!-- Notifications will appear here dynamically -->
+            </div>
+
+            <div class="notifications-footer">
+                <a href="notifications.html">View all notifications</a>
+            </div>
 
         </div>
+
+    </div>
+    <!-- Notification dropdown ends here -->
+
+    <!-- WELCOME MESSAGE -->
+    <span id="welcomeStudent">
+        Hi, Student
+    </span>
+
+    <!-- PROFILE DROPDOWN -->
+    <div class="profile-dropdown">
+
+        <button
+            type="button"
+            id="profileDropdownBtn"
+            class="profile-dropdown-btn"
+            aria-label="Open profile menu"
+            aria-expanded="false"
+        >
+            <span class="profile-avatar">
+                <span id="profileInitial">S</span>
+            </span>
+
+            <span class="dropdown-arrow">▼</span>
+        </button>
+
+        <div id="profileDropdownMenu" class="profile-dropdown-menu" hidden>
+
+            <a href="profile.html">My Profile</a>
+
+            <a href="my-registrations.html">My Registrations</a>
+
+            <button type="button" id="logoutBtn">
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
 
     </nav>
 
@@ -355,9 +440,12 @@
                         Test your programming skills and compete with fellow students.
                     </p>
 
-<button type="button" onclick="window.open('coding-register.html', '_blank', 'noopener,noreferrer')">
+<a href="coding-register.html"
+   class="register-btn"
+   target="_blank"
+   rel="noopener noreferrer">
     Register Now
-</button>
+</a>
 
                 </div>
 
@@ -555,8 +643,10 @@
         </div>
 
     </footer>
+<script src="script.js"></script>
+<script src="auth-ui.js"></script>
+<script src="notifications.js"></script>
 
 
 </body>
-
 </html>

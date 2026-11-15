@@ -160,6 +160,15 @@ body {
 
     flex-shrink: 0;
 }
+/* VISITOR NAVIGATION BUTTONS */
+
+.visitor-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    flex-shrink: 0;
+}
 
 
 /* SIGN IN by Vipul Mittal */
@@ -2593,5 +2602,369 @@ body.event-register-page:not(.coding-page) .event-hero h1 {
     accent-color: #a855f7;
     cursor: pointer;
 }
+
+/* =================================
+   LOGGED-IN STUDENT NAVBAR
+================================= */
+
+/* Ensure hidden elements stay hidden */
+[hidden] {
+    display: none !important;
+}
+
+/* Visitor navigation */
+.visitor-nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Logged-in student navigation */
+.student-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* Welcome message */
+#welcomeStudent {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Profile dropdown container */
+.profile-dropdown {
+    position: relative;
+}
+
+/* Profile icon button */
+.profile-dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Circular profile icon */
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        #6d28d9,
+        #9333ea,
+        #d946ef
+    );
+
+    border: 2px solid #c084fc;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+.profile-dropdown-btn:hover .profile-avatar {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
+}
+
+/* Dropdown arrow */
+.dropdown-arrow {
+    color: #d8b4fe;
+    font-size: 11px;
+}
+
+/* Dropdown menu */
+.profile-dropdown-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+
+    min-width: 190px;
+
+    background: #160d24;
+    border: 1px solid rgba(192, 132, 252, 0.4);
+    border-radius: 12px;
+
+    padding: 8px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    z-index: 2000;
+}
+
+/* Dropdown links and buttons */
+.profile-dropdown-menu a,
+.profile-dropdown-menu button {
+    display: block;
+    width: 100%;
+
+    padding: 11px 13px;
+
+    color: #eee3fa;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+
+    text-decoration: none;
+    text-align: left;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+/* Dropdown hover */
+.profile-dropdown-menu a:hover,
+.profile-dropdown-menu button:hover {
+    background: rgba(168, 85, 247, 0.2);
+    color: #d8b4fe;
+}
+
+/* Logout styling */
+.profile-dropdown-menu button {
+    color: #ff8b9b;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+
+    .student-nav {
+        gap: 8px;
+    }
+
+    #welcomeStudent {
+        font-size: 13px;
+    }
+
+    .profile-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .profile-dropdown-menu {
+        min-width: 175px;
+    }
+}
+
+/* =====================================================
+   NOTIFICATION DROPDOWN — DIYA
+   ===================================================== */
+
+/* Notification dropdown container */
+.notification-dropdown {
+    position: relative;
+}
+
+/* Notification bell button */
+.notifications-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(192, 132, 252, 0.3);
+    border-radius: 50%;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.notifications-btn:hover {
+    background: rgba(168, 85, 247, 0.25);
+    box-shadow: 0 0 15px rgba(192, 132, 252, 0.3);
+}
+
+/* Bell icon */
+.notification-bell {
+    font-size: 20px;
+}
+
+/* Unread notification count */
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ef4444;
+    color: white;
+
+    border: 2px solid #090611;
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* Notification dropdown menu */
+.notifications-menu {
+    position: absolute;
+    top: 55px;
+    right: -55px;
+
+    width: 340px;
+    max-width: calc(100vw - 30px);
+    max-height: 420px;
+
+    overflow-y: auto;
+
+    background: #160d24;
+    border: 1px solid rgba(192, 132, 252, 0.4);
+    border-radius: 14px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    z-index: 2000;
+}
+
+/* Respect the HTML hidden attribute */
+.notifications-menu[hidden],
+.notification-badge[hidden] {
+    display: none !important;
+}
+
+/* Notification header */
+.notifications-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px;
+
+    border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.notifications-header h3 {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+/* Mark all as read */
+#markAllReadBtn {
+    background: transparent;
+    border: none;
+
+    color: #c084fc;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#markAllReadBtn:hover {
+    color: #ffffff;
+}
+
+/* Notification list */
+.notifications-list {
+    padding: 8px;
+}
+
+/* Individual notification */
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 9px;
+    transition: 0.2s ease;
+}
+
+.notification-item:hover {
+    background: rgba(168, 85, 247, 0.15);
+}
+
+/* Unread notification */
+.notification-item.unread {
+    background: rgba(168, 85, 247, 0.10);
+}
+
+/* Notification text */
+.notification-content {
+    flex: 1;
+}
+
+.notification-content h4 {
+    color: #ffffff;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.notification-content p {
+    color: #cfc4db;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.notification-content small {
+    display: block;
+    margin-top: 5px;
+    color: #a99ab9;
+    font-size: 11px;
+}
+
+/* Notification footer */
+.notifications-footer {
+    padding: 12px;
+    text-align: center;
+    border-top: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.notifications-footer a {
+    color: #c084fc;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.notifications-footer a:hover {
+    color: #ffffff;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+
+    .notifications-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .notification-bell {
+        font-size: 17px;
+    }
+
+    .notifications-menu {
+        right: -45px;
+        width: 310px;
+        max-height: 380px;
+    }
+}
+
 
 
