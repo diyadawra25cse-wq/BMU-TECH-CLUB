@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE_URL || "http://localhost:5000";
+const API_BASE = window.API_BASE_URL || "https://bmu-tech-club-backend.onrender.com";
 const signinForm = document.getElementById("signinForm");
 const signinEmail = document.getElementById("signinEmail");
 const signinPassword = document.getElementById("signinPassword");

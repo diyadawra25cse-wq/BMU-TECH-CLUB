@@ -43,7 +43,7 @@ if (joinSection) {
     try {
 
         // Verify the stored token with the backend
-        const response = await fetch(`${window.API_BASE_URL || "http://localhost:5000"}/api/auth/me`, {
+        const response = await fetch(`${window.API_BASE_URL || "https://bmu-tech-club-backend.onrender.com"}/api/auth/me`, {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token
