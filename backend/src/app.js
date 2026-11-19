@@ -10,7 +10,8 @@ const registrationRoutes = require("./routes/registrationRoutes");
 const localDataRoutes = require("./routes/localDataRoutes");
 const externalRoutes = require("./routes/externalRoutes");
 
-// CORS configuration supporting development environments and Live Server
+
+// CORS configuration for production and local development
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   "http://127.0.0.1:5500",
@@ -24,15 +25,16 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (like mobile apps, curl, or file://)
-      if (!origin || allowedOrigins.includes(origin) || origin === "null") {
+      if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-      return callback(null, true); // Permissive in dev to avoid blocking evaluators
+
+      return callback(new Error("Not allowed by CORS"));
     },
     credentials: true
   })
 );
+
 
 // Middleware to read JSON request bodies
 app.use(express.json());
