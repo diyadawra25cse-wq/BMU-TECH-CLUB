@@ -15,7 +15,77 @@
 
 <body>
 
-    <main class="notifications-page">
+<header class="header">
+    <nav class="navbar">
+
+        <div class="brand">
+            <img src="bml_logo2.png" alt="BMU Tech Club Logo" class="bmu-logo">
+            <div class="brand-text">
+                <h1>BMU Tech Club</h1>
+                <p>BML Munjal University</p>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#activities">Activities</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+
+        <div class="header-buttons">
+
+            <div id="visitorNav" class="visitor-nav">
+                <a href="signin.html" class="signin-btn">Sign In</a>
+                <a href="register.html" class="join-btn">Join Us</a>
+            </div>
+
+            <div id="studentNav" class="student-nav" hidden>
+
+                <div class="notification-dropdown">
+                    <button type="button" id="notificationsBtn" class="notifications-btn" aria-label="Open notifications" aria-expanded="false">
+                        <span class="notification-bell">🔔</span>
+                        <span id="notificationBadge" class="notification-badge" hidden>0</span>
+                    </button>
+
+                    <div id="notificationsMenu" class="notifications-menu" hidden>
+                        <div class="notifications-header">
+                            <h3>Notifications</h3>
+                            <button type="button" id="markAllReadBtn">Mark all as read</button>
+                        </div>
+                        <div id="notificationsList" class="notifications-list"></div>
+                        <div class="notifications-footer">
+                            <a href="notifications.html">View all notifications</a>
+                        </div>
+                    </div>
+                </div>
+
+                <span id="welcomeStudent">Hi, Student</span>
+
+                <div class="profile-dropdown">
+                    <button type="button" id="profileDropdownBtn" class="profile-dropdown-btn" aria-label="Open profile menu" aria-expanded="false">
+                        <span class="profile-avatar">
+                            <span id="profileInitial">S</span>
+                        </span>
+                        <span class="dropdown-arrow">▼</span>
+                    </button>
+
+                    <div id="profileDropdownMenu" class="profile-dropdown-menu" hidden>
+                        <a href="profile.html">My Profile</a>
+                        <a href="my-registrations.html">My Registrations</a>
+                        <button type="button" id="logoutBtn">Logout</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </nav>
+</header>
+
+<main class="notifications-page">
         <div class="notifications-page-header">
             <h1>Notifications</h1>
             <p>Stay updated with your BMU Tech Club activities.</p>
@@ -32,5 +102,8 @@
        <a href="index.html">Back to Home</a>
     </main>
 
+<script src="script.js"></script>
+<script src="auth-ui.js"></script>
+    
 </body>
 </html>
