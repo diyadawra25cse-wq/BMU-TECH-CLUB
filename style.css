@@ -3193,3 +3193,12 @@ body.event-register-page:not(.coding-page) .event-hero h1 {
         width: 95%;
     }
 }
+
+#allNotificationsList > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #d8b4fe;
+    font-size: 16px;
+    padding: 30px 10px;
+}
+
