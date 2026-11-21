@@ -307,11 +307,7 @@ cancelBtn.addEventListener("click", function () {
 
 editForm.addEventListener("submit", function (event) {
     event.preventDefault();
-
-    message.textContent =
-        "Edit form is ready. Permanent saving will be enabled after backend integration.";
 });
-
     } catch (error) {
         console.error(error);
         message.textContent = error.message;
