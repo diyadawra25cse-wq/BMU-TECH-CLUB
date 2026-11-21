@@ -38,10 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         list.innerHTML = "";
 
-        if (notifications.length === 0) {
-            list.textContent = "You have no notifications yet.";
-            return;
-        }
+     if (notifications.length === 0) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.textContent = "You have no notifications yet.";
+    emptyMessage.className = "no-notifications-message";
+    list.appendChild(emptyMessage);
+    return;
+}
 
         notifications.forEach(notification => {
 
