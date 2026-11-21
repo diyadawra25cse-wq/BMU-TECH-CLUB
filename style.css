@@ -3036,3 +3036,88 @@ body.event-register-page:not(.coding-page) .event-hero h1 {
     }
 }
 
+/* NOTIFICATIONS PAGE */
+
+#allNotificationsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.notification-page-card {
+    background: #171022;
+    border: 1px solid #6b21a8;
+    border-radius: 14px;
+    padding: 24px;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notification-page-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(147, 51, 234, 0.2);
+}
+
+.notification-page-card h3 {
+    color: #d8b4fe;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.notification-page-card p {
+    color: #e5e1eb;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 10px 0;
+    overflow-wrap: anywhere;
+}
+
+.notification-page-card.unread {
+    border-left: 5px solid #a855f7;
+    background: #211333;
+}
+
+.notification-page-card.read {
+    border-left: 5px solid #6b7280;
+    opacity: 0.85;
+}
+
+#markAllPageReadBtn {
+    display: block;
+    margin: 25px auto;
+    padding: 12px 24px;
+    background: #7e22ce;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#markAllPageReadBtn:hover {
+    background: #9333ea;
+}
+
+#markAllPageReadBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    #allNotificationsList {
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+
+    .notification-page-card {
+        padding: 20px;
+    }
+}
+
+
+
