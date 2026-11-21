@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | BMU Tech Club</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .profile-page {
+            min-height: 100vh;
+            padding: 120px 20px 60px;
+            background: #090611;
+            color: white;
+        }
+
+        .profile-card {
+            max-width: 700px;
+            margin: auto;
+            padding: 35px;
+            background: linear-gradient(145deg, #1c1030, #100a1c);
+            border: 1px solid rgba(168,85,247,.35);
+            border-radius: 18px;
+        }
+
+        .profile-card h1 {
+            color: #d8b4fe;
+            margin-bottom: 10px;
+        }
+
+        .profile-subtitle {
+            color: #cfc4db;
+            margin-bottom: 30px;
+        }
+
+        .profile-field {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(168,85,247,.2);
+        }
+
+        .profile-field label {
+            display: block;
+            color: #c084fc;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .profile-field p {
+            color: white;
+            font-size: 15px;
+        }
+
+        .profile-back {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: #c084fc;
+            text-decoration: none;
+        }
+
+        #profileMessage {
+            color: #d8b4fe;
+            margin-top: 20px;
+        }
+
+        @media(max-width:600px) {
+            .profile-card {
+                padding: 22px;
+            }
+        }
+.profile-edit-btn,
+#editProfileForm button {
+    background: #9333ea;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px 5px 10px 0;
+}
+
+#editProfileForm {
+    margin: 20px 0;
+    padding: 20px;
+    background: #160d25;
+    border: 1px solid #6b21a8;
+    border-radius: 12px;
+}
+
+#editProfileForm label {
+    display: block;
+    margin: 12px 0 6px;
+    color: #d8b4fe;
+}
+
+#editProfileForm input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #6b21a8;
+    background: #090611;
+    color: white;
+    box-sizing: border-box;
+}
+
+    </style>
+</head>
+
+<body>
+
+<main class="profile-page">
+    <div class="profile-card">
+
+        <a href="index.html" class="profile-back">← Back to Home</a>
+
+        <h1>My Profile</h1>
+        <p class="profile-subtitle">
+            View your BMU Tech Club account details.
+        </p>
+
+<button id="editProfileBtn" class="profile-edit-btn">
+    Edit Profile
+</button>
+
+<form id="editProfileForm" style="display:none;">
+
+    <h2>Edit Your Details</h2>
+
+    <label>Full Name</label>
+    <input type="text" id="editFullName" required>
+
+    <label>Phone Number</label>
+    <input type="tel" id="editPhoneNumber" required>
+
+    <label>Course</label>
+    <input type="text" id="editCourse" required>
+
+    <label>Year</label>
+    <input type="number" id="editYear" min="1" max="5" required>
+
+    <label>Interests</label>
+    <input type="text" id="editInterest">
+
+    <button type="submit">Save Changes</button>
+    <button type="button" id="cancelEditBtn">Cancel</button>
+
+</form>
+
+        <div id="profileDetails">
+            Loading your profile...
+        </div>
+
+        <p id="profileMessage"></p>
+
+    </div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", async function () {
+
+    const token = localStorage.getItem("authToken");
+    const details = document.getElementById("profileDetails");
+    const message = document.getElementById("profileMessage");
+
+    if (!token) {
+        window.location.href = "signin.html";
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "https://bmu-tech-club-backend.onrender.com/api/auth/profile",
+            {
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+        const result = await response.json();
+
+        if (response.status === 401) {
+            localStorage.removeItem("authToken");
+            localStorage.removeItem("currentUser");
+            window.location.href = "signin.html";
+            return;
+        }
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.message || "Unable to load profile.");
+        }
+
+        const user = result.data;
+
+        const fields = [
+            ["Full Name", user.fullName],
+            ["Enrollment Number", user.enrollmentNumber],
+            ["Email Address", user.email],
+            ["Phone Number", user.phoneNumber],
+            ["Course", user.course],
+            ["Year", user.year],
+            ["Interests", user.interest || "Not provided"]
+        ];
+
+        details.innerHTML = fields.map(([label, value]) => `
+            <div class="profile-field">
+                <label>${label}</label>
+                <p></p>
+            </div>
+        `).join("");
+
+        details.querySelectorAll(".profile-field p").forEach((element, index) => {
+            element.textContent = fields[index][1] || "Not provided";
+        });
+
+// Edit Profile functionality
+const editBtn = document.getElementById("editProfileBtn");
+const editForm = document.getElementById("editProfileForm");
+const cancelBtn = document.getElementById("cancelEditBtn");
+
+editBtn.addEventListener("click", function () {
+    document.getElementById("editFullName").value = user.fullName || "";
+    document.getElementById("editPhoneNumber").value = user.phoneNumber || "";
+    document.getElementById("editCourse").value = user.course || "";
+    document.getElementById("editYear").value = user.year || "";
+    document.getElementById("editInterest").value = user.interest || "";
+
+    editForm.style.display = "block";
+    editBtn.style.display = "none";
+});
+
+cancelBtn.addEventListener("click", function () {
+    editForm.style.display = "none";
+    editBtn.style.display = "inline-block";
+});
+
+editForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    message.textContent =
+        "Edit form is ready. Permanent saving will be enabled after backend integration.";
+});
+
+    } catch (error) {
+        console.error(error);
+        message.textContent = error.message;
+    }
+
+});
+</script>
+
+</body>
+</html>
