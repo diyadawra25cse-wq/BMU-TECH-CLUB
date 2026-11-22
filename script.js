@@ -286,9 +286,9 @@ try {
     localStorage.setItem("authToken", result.token);
     localStorage.setItem("currentUser", JSON.stringify(result.data));
 
-    showMessage("Registration successful!", "success");
-    form.reset();
-    openSuccessPopup();
+  showMessage("Registration successful!", "success");
+form.reset();
+openSuccessPopup();
 
 } catch (error) {
     showMessage(
@@ -464,8 +464,21 @@ eventForms.forEach(function (eventForm) {
     }
 
     showEventMessage("Registration successful!", "success");
-    eventForm.reset();
-    openSuccessPopup();
+
+// Create a notification for this event
+const formattedEventName = eventName
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, letter => letter.toUpperCase());
+
+if (typeof window.addNotification === "function") {
+    window.addNotification(
+        "Registration Successful!",
+        `You have successfully registered for ${formattedEventName}.`
+    );
+}
+
+eventForm.reset();
+openSuccessPopup();
 
 } catch (error) {
     showEventMessage(
