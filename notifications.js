@@ -28,21 +28,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Add a notification (available on every page loading this script)
-    window.addNotification = function(title, message) {
+   window.addNotification = function(title, message, type, eventId) {
 
-        const notifications = getNotifications();
+    const notifications = getNotifications();
 
-        notifications.unshift({
-            id: Date.now(),
-            title: title,
-            message: message,
-            createdAt: new Date().toISOString(),
-            read: false
-        });
+    // Prevent duplicate notifications for the same event and type
+    if (eventId && type) {
+        const alreadyExists = notifications.some(notification =>
+            notification.type === type &&
+            notification.eventId === eventId
+        );
 
-        saveNotifications(notifications);
-        renderNotifications();
-    };
+        if (alreadyExists) {
+            return;
+        }
+    }
+
+    notifications.unshift({
+        id: Date.now(),
+        title: title,
+        message: message,
+        type: type || "general",
+        eventId: eventId || null,
+        createdAt: new Date().toISOString(),
+        read: false
+    });
+
+    saveNotifications(notifications);
+    renderNotifications();
+};
 
     // Find notification dropdown elements
     const notificationsBtn = document.getElementById("notificationsBtn");
